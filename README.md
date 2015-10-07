@@ -4,6 +4,8 @@ Such module is intended to bring Spiral ODM component functionality into Laravel
 ## Installation
 TODO
 
+## Schema Updates
+
 ## Examples
 TODO
 
