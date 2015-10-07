@@ -15,6 +15,7 @@ use Spiral\Core\ContainerInterface;
 use Spiral\Core\HippocampusInterface;
 use Spiral\LODM\Support\SimpleMemory;
 use Spiral\ODM\ODM;
+use Spiral\Tokenizer\Tokenizer;
 use Spiral\Tokenizer\TokenizerInterface;
 use Spiral\Validation\ValidatorInterface;
 
