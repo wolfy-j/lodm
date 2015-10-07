@@ -9,6 +9,7 @@
 namespace Spiral\LODM\Commands;
 
 use Illuminate\Console\Command;
+use Spiral\ODM\ODM;
 
 /**
  * Performs ODM schema update.
@@ -30,12 +31,30 @@ class SchemaUpdate extends Command
     protected $description = 'Update ODM behaviour schema.';
 
     /**
+     * @var ODM
+     */
+    protected $odm = null;
+
+    /**
+     * @param ODM $odm
+     */
+    public function __construct(ODM $odm)
+    {
+        $this->odm = $odm;
+    }
+
+    /**
      * Execute the console command.
      *
      * @return mixed
      */
     public function handle()
     {
-        //TODO: update stuff
+        $builder = $this->odm->updateSchema();
+
+        $countModels = count($builder->getDocuments());
+        $this->write(
+            "<info>ODM Schema has been updated, found documents: <comment>{$countModels}</comment></info>"
+        );
     }
 }
