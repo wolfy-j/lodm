@@ -4,7 +4,7 @@ LODM module is intended to bring Spiral ODM component functionality into Laravel
 Functionality includes:
 * Compositions (nested documents)
 * Aggregations (related documents)
-* Validations (laravel validator rules can be used)
+* Entity validations (laravel validator rules can be used)
 * Read access (hidden fields)
 * Write access (secure and fillable fields)
 * JsonSerialization
@@ -63,6 +63,8 @@ To update ODM schema simply execute: `php artisan odm:schema`
 
 ## Examples
 TODO
+
+> Document is NOT ActiveRecord (even if it looks so) NEVER put client data into constructor you either have to use static method `create` or `setFields` of your entity.
 
 See documenation to get more information.
 
