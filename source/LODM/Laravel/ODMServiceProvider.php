@@ -72,4 +72,18 @@ class ODMServiceProvider extends ServiceProvider
             return $this->container->get(ODM::class);
         });
     }
+
+    /**
+     * Mounting configurations.
+     */
+    public function boot()
+    {
+        $this->mergeConfigFrom(
+            __DIR__ . '/../../config/odm.php', 'spiral.odm'
+        );
+
+        $this->mergeConfigFrom(
+            __DIR__ . '/../../config/tokenizer.php', 'spiral.tokenizer'
+        );
+    }
 }
