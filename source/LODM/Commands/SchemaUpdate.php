@@ -13,7 +13,7 @@ use Illuminate\Console\Command;
 /**
  * Performs ODM schema update.
  */
-class Update extends Command
+class SchemaUpdate extends Command
 {
     /**
      * The name and signature of the console command.
