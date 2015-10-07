@@ -21,7 +21,7 @@ class SchemaUpdate extends Command
      *
      * @var string
      */
-    protected $signature = 'odm:update';
+    protected $signature = 'odm:schema';
 
     /**
      * The console command description.
