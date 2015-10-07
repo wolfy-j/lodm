@@ -12,6 +12,9 @@
     "spiral/components": "*"
   },
   "autoload": {
+    "files": [
+      "source/functions.php"
+    ],
     "psr-4": {
       "Spiral\\": "source/"
     }
