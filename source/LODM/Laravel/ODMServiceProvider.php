@@ -78,12 +78,10 @@ class ODMServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->mergeConfigFrom(
-            __DIR__ . '/../../config/odm.php', 'spiral.odm'
-        );
-
-        $this->mergeConfigFrom(
-            __DIR__ . '/../../config/tokenizer.php', 'spiral.tokenizer'
-        );
+        //todo: make sure configs are not overwritten
+        $this->publishes([
+            __DIR__ . '/../../config/odm.php'       => 'spiral.odm',
+            __DIR__ . '/../../config/tokenizer.php' => 'spiral.tokenizer'
+        ]);
     }
 }
