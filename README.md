@@ -1,4 +1,4 @@
-# laravel-odm
+# Spiral ODM for Laravel 5.1+
 Such module is intended to bring Spiral ODM component functionality into laravel application.
 
 Documentation for ODM Component with examples can be found on [this page](https://github.com/spiral/guide/blob/master/odm/overview.md).
