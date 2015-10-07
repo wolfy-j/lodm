@@ -1,5 +1,5 @@
 # Spiral ODM for Laravel 5.1+
-Such module is intended to bring Spiral ODM component functionality into Laravel application. Component provides ability to manager your MongoDB data in OOP way using compositions and aggregations, as side effect of component design you are able to create ODM mondels which are not related to MongoDB and use them to represent iehahical data.
+Such module is intended to bring Spiral ODM component functionality into Laravel application. Component provides ability to manager your MongoDB data in OOP way using compositions and aggregations, as side effect of component design you are able to create ODM models which are not related to MongoDB and use them to represent iehahical data.
 
 ## Installation
 TODO
