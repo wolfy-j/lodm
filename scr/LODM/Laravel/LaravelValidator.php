@@ -12,6 +12,8 @@ use Spiral\Validation\ValidatorInterface;
 
 /**
  * A simple validation manager which utilizes Laravel validation mechanism.
+ *
+ * @see https://github.com/spiral/guide/blob/master/components/validation.md
  */
 class LaravelValidator implements ValidatorInterface
 {
