@@ -6,7 +6,7 @@
  * @author    Anton Titov (Wolfy-J)
  * @copyright ©2009-2015
  */
-namespace LODM\Laravel;
+namespace Spiral\LODM\Laravel;
 
 use Spiral\Validation\ValidatorInterface;
 

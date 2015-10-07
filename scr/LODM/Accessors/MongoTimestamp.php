@@ -6,9 +6,9 @@
  * @author    Anton Titov (Wolfy-J)
  * @copyright ©2009-2015
  */
-namespace LODM\Accessors;
+namespace Spiral\LODM\Accessors;
 
-use LODM\Accessors\Prototypes\AbstractTimestamp;
+use Spiral\LODM\Accessors\Prototypes\AbstractTimestamp;
 use Spiral\Models\EntityInterface;
 use Spiral\ODM\AtomicAccessorInterface;
 use Spiral\ODM\CompositableInterface;

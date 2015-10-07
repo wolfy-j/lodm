@@ -6,7 +6,7 @@
  * @author    Anton Titov (Wolfy-J)
  * @copyright ©2009-2015
  */
-namespace LODM\Traits;
+namespace Spiral\LODM\Traits;
 
 use Spiral\Events\Entities\Event;
 use Spiral\Events\Entities\ObjectEvent;

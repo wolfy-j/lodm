@@ -6,7 +6,7 @@
  * @author    Anton Titov (Wolfy-J)
  * @copyright ©2009-2015
  */
-namespace LODM\Support\Exceptions;
+namespace Spiral\LODM\Support\Exceptions;
 
 /**
  * Error while writing memory to permanent storage.

@@ -6,7 +6,7 @@
  * @author    Anton Titov (Wolfy-J)
  * @copyright ©2009-2015
  */
-namespace LODM\Accessors\Prototypes;
+namespace Spiral\LODM\Accessors\Prototypes;
 
 use Carbon\Carbon;
 

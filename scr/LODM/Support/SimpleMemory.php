@@ -6,9 +6,9 @@
  * @author    Anton Titov (Wolfy-J)
  * @copyright ©2009-2015
  */
-namespace LODM\Support;
+namespace Spiral\LODM\Support;
 
-use LODM\Support\Exceptions\MemoryWriteException;
+use Spiral\LODM\Support\Exceptions\MemoryWriteException;
 use Spiral\Core\HippocampusInterface;
 
 /**
