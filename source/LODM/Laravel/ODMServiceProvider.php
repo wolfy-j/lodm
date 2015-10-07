@@ -12,6 +12,8 @@ use Illuminate\Support\ServiceProvider;
 use Spiral\Core\ConfiguratorInterface;
 use Spiral\Core\Container;
 use Spiral\Core\HippocampusInterface;
+use Spiral\Files\FileManager;
+use Spiral\Files\FilesInterface;
 use Spiral\LODM\Support\SimpleMemory;
 use Spiral\ODM\ODM;
 use Spiral\Tokenizer\Tokenizer;
@@ -48,6 +50,9 @@ class ODMServiceProvider extends ServiceProvider
         //Spiral has it's own validation mechanism which is represented by a simple interface
         //we can wrap laravel validation functionality and rules
         $container->bind(ValidatorInterface::class, LaravelValidator::class);
+
+        //Required for tokenizer to read file
+        $container->bind(FilesInterface::class, FileManager::class);
 
         //Laravel also uses it's own configuration source, let's define our wrapper in spiral
         //container, default settings will use folder "spiral" under config directory to prevent
