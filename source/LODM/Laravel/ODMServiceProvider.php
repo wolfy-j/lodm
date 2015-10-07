@@ -55,8 +55,10 @@ class ODMServiceProvider extends ServiceProvider
         $container->bindSingleton(ConfiguratorInterface::class, LaravelConfigurator::class);
 
         //ODM and some other components also use so called application memory (see doc) to store
-        //behaviour schemas, we can use simple wrapper (no need to keep singleton)
-        $container->bind(HippocampusInterface::class, SimpleMemory::class);
+        //behaviour schemas, we can use simple wrapper
+        $container->bindSingleton(HippocampusInterface::class, function () {
+            return new SimpleMemory(storage_path('/'));
+        });
 
         //Ok, now can define our ODM as singleton
         $this->app->singleton(ODM::class, function () use ($container) {
