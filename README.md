@@ -4,7 +4,7 @@ LODM module is intended to bring Spiral ODM component functionality into Laravel
 Functionality includes:
 * Compositions (nested documents)
 * Aggregations (related documents)
-* Validations (laraval validator rules can be used)
+* Validations (laravel validator rules can be used)
 * Read access (hidden fields)
 * Write access (secure and fillable fields)
 * JsonSerialization
