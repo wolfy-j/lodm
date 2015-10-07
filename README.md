@@ -1,6 +1,17 @@
 # Spiral ODM for Laravel 5.1+
 LODM module is intended to bring Spiral ODM component functionality into Laravel applications. Component provides ability to manage your MongoDB data in OOP way using compositions and aggregations of your model. One of the side effects of component design makes you able to create ODM models which are not related to MongoDB and use them to represent iehahical data.
 
+Functionality includes:
+* Compositions (nested documents)
+* Aggregations (related documents)
+* Validations (laraval validator rules can be used)
+* Read access (hidden fields)
+* Write access (secure and fillable fields)
+* JsonSerialization
+* Field mutators (getters and setters)
+* Field accessors (for example Carbon reader/writer for MongoDB fields)
+* Magic getters, setters and methods
+
 ## Installation
 Package installation can be performed using simple composer command `composer require wolfy-j/lodm`. Module provides two configuration files using to describe class location directories (by default whole application), set of connected MongoDB databases (ODM does not use any of Laravel database functionality) and options used to simplify document creation.
 
@@ -46,7 +57,7 @@ To make ODM functionality available in your application you have to register `Sp
 > You can read more about componenet configuration in it's official documentation.
 
 ## Schema Updates
-Spiral ODM component utilizes so called behaviour schemas for it's entities, such technique used to singnificantly increate component performance without recuding it's functionality. Since schema stored in permanent application memory you have to update it every time you changes any of you Document or DocumentEntity models (like schema, default, fillable, validates and etc).
+Spiral ODM component utilizes so called behaviour schemas for it's entities, such technique used to singnificantly increate component performance without recuding it's functionality. Since schema stored in permanent application memory you have to update it every time you doing changes any of you `Document` or `DocumentEntity` models (like schema, default, fillable, validates and etc).
 
 To update ODM schema simply execute: `php artisan odm:schema`
 
