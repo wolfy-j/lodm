@@ -15,6 +15,7 @@ use Spiral\Core\HippocampusInterface;
 use Spiral\Files\FileManager;
 use Spiral\Files\FilesInterface;
 use Spiral\LODM\Support\SimpleMemory;
+use Spiral\LODM\Support\StaticContainer;
 use Spiral\ODM\ODM;
 use Spiral\Tokenizer\Tokenizer;
 use Spiral\Tokenizer\TokenizerInterface;
@@ -43,6 +44,7 @@ class ODMServiceProvider extends ServiceProvider
          *
          * new Post([], null, $odm);
          */
+        StaticContainer::mountContainer($container);
 
         //Since laravel uses this method for bindings, we can use it too
         $container->bind(TokenizerInterface::class, Tokenizer::class);
