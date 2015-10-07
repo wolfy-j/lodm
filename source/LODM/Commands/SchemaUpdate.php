@@ -41,6 +41,7 @@ class SchemaUpdate extends Command
     public function __construct(ODM $odm)
     {
         $this->odm = $odm;
+        parent::__construct();
     }
 
     /**
@@ -53,7 +54,7 @@ class SchemaUpdate extends Command
         $builder = $this->odm->updateSchema();
 
         $countModels = count($builder->getDocuments());
-        $this->write(
+        $this->info(
             "<info>ODM Schema has been updated, found documents: <comment>{$countModels}</comment></info>"
         );
     }
