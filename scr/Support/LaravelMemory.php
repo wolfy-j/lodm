@@ -55,7 +55,11 @@ class LaravelMemory implements HippocampusInterface
             return null;
         }
 
-        require $filename;
+        try {
+            return include($filename);
+        } catch (\ErrorException $exception) {
+            return null;
+        }
     }
 
     /**
