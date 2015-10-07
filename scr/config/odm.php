@@ -31,12 +31,14 @@ return [
     ],
     'schemas'   => [
         'mutators'       => [
-            'int'     => ['setter' => 'intval'],
-            'float'   => ['setter' => 'floatval'],
-            'string'  => ['setter' => 'strval'],
-            'bool'    => ['setter' => 'boolval'],
-            'MongoId' => ['setter' => [ODM::class, 'mongoID']],
-            'array'   => ['accessor' => ScalarArray::class]
+            'int'       => ['setter' => 'intval'],
+            'float'     => ['setter' => 'floatval'],
+            'string'    => ['setter' => 'strval'],
+            'bool'      => ['setter' => 'boolval'],
+            'MongoId'   => ['setter' => [ODM::class, 'mongoID']],
+            'array'     => ['accessor' => ScalarArray::class],
+            'timestamp' => ['accessor' => \LODM\Accessors\MongoTimestamp::class],
+            'MongoDate' => ['accessor' => \LODM\Accessors\MongoTimestamp::class]
         ],
         'mutatorAliases' => [
         ]
