@@ -12,13 +12,13 @@ use LODM\Support\Exceptions\MemoryWriteException;
 use Spiral\Core\HippocampusInterface;
 
 /**
- * Application memory for Laravel applications.
+ * Simple application memory to be used outside of spiral core, for example in Laravel applications.
  *
  * @see https://github.com/spiral/guide/blob/master/framework/design.md
  * @see https://github.com/spiral/guide/blob/master/framework/memory.md
  * @see https://github.com/spiral/guide/blob/master/schemas.md
  */
-class LaravelMemory implements HippocampusInterface
+class SimpleMemory implements HippocampusInterface
 {
     /**
      * Memory file extension.
