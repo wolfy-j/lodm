@@ -72,7 +72,7 @@ See documenation to get more information.
 
 Documentation for ODM Component with examples can be found on [this page](https://github.com/spiral/guide/blob/master/odm/overview.md) - WILL BE UPDATED THIS WEEK (in my drafts for now). To find how to use Documents outside of MongoDB scope check this [documentation](https://github.com/spiral/guide/blob/master/odm/standalone.md) - IN DRAFT.
 
-You can find list of available spiral components including Templater, ORM, Storage Manager and etc [here](https://github.com/spiral/components).
+You can also find list of available spiral components including Templater, ORM, Storage Manager and etc [here](https://github.com/spiral/components).
 
 Other documentation articles related to Spiral ODM component:
 * [The Design] (https://github.com/spiral/guide/blob/master/framework/design.md) 
