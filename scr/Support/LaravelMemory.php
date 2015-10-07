@@ -70,7 +70,9 @@ class LaravelMemory implements HippocampusInterface
         if (empty($location)) {
             $location = $this->defaultLocation;
         }
+
         $filename = $location . $name . '.' . static::EXTENSION;
+
         try {
             //We are going to store data in php form, in this OpCache will work for us
             file_put_contents($filename, '<?php return ' . var_export($data, true) . ';');
