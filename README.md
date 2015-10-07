@@ -46,6 +46,9 @@ To make ODM functionality available in your application you have to register `Sp
 > You can read more about componenet configuration in it's official documentation.
 
 ## Schema Updates
+Spiral ODM component utilizes so called behaviour schemas for it's entities, such technique used to singnificantly increate component performance without recuding it's functionality. Since schema stored in permanent application memory you have to update it every time you changes any of you Document or DocumentEntity models (like schema, default, fillable, validates and etc).
+
+To update ODM schema simply execute: `php artisan odm:schema`
 
 ## Examples
 TODO
