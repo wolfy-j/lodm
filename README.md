@@ -1,8 +1,49 @@
 # Spiral ODM for Laravel 5.1+
-Such module is intended to bring Spiral ODM component functionality into Laravel application. Component provides ability to manager your MongoDB data in OOP way using compositions and aggregations, as side effect of component design you are able to create ODM models which are not related to MongoDB and use them to represent iehahical data.
+LODM module is intended to bring Spiral ODM component functionality into Laravel applications. Component provides ability to manage your MongoDB data in OOP way using compositions and aggregations of your model. One of the side effects of component design makes you able to create ODM models which are not related to MongoDB and use them to represent iehahical data.
 
 ## Installation
-TODO
+Package installation can be performed using simple composer command `composer require wolfy-j/lodm`. Module provides two configuration files using to describe class location directories (by default whole application), set of connected MongoDB databases (ODM does not use any of Laravel database functionality) and options used to simplify document creation.
+
+To publish component configurations, simply execute `php artisan vendor:publish`. Now you are able to specify database connection in `config/spiral/odm.php` file:
+
+```php
+return [
+    'default'   => 'default',
+    'databases' => [
+        'default' => [
+            'server'    => 'mongodb://localhost:27017',
+            'profiling' => MongoDatabase::PROFILE_SIMPLE,
+            'database'  => 'spiral-empty',
+            'options'   => [
+                'connect' => true
+            ]
+        ]
+    ],
+    'aliases'   => [
+        'database' => 'default',
+        'db'       => 'default',
+        'mongo'    => 'default'
+    ],
+    'schemas'   => [
+        'mutators'       => [
+            'int'       => ['setter' => 'intval'],
+            'float'     => ['setter' => 'floatval'],
+            'string'    => ['setter' => 'strval'],
+            'bool'      => ['setter' => 'boolval'],
+            'MongoId'   => ['setter' => [ODM::class, 'mongoID']],
+            'array'     => ['accessor' => ScalarArray::class],
+            'timestamp' => ['accessor' => \Spiral\LODM\Accessors\MongoTimestamp::class],
+            'MongoDate' => ['accessor' => \Spiral\LODM\Accessors\MongoTimestamp::class]
+        ],
+        'mutatorAliases' => [
+        ]
+    ]
+];
+```
+
+To make ODM functionality available in your application you have to register `Spiral\LODM\Laravel\ODMServiceProvider` service provider and CLI command `Spiral\LODM\Commands\SchemaUpdate` in app.php config and ConsoleKernel accordingly.
+
+> You can read more about componenet configuration in it's official documentation.
 
 ## Schema Updates
 
