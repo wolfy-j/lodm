@@ -10,7 +10,6 @@ Other documentation articles related to Spiral ODM component:
 * [**IoC Container**] (https://github.com/spiral/guide/blob/master/framework/container.md)
 * [Application Memory (&#1000;)] (https://github.com/spiral/guide/blob/master/framework/memory.md)
 * [**DataEntity Model**] (https://github.com/spiral/guide/blob/master/components/entity.md)
-* [Events] (https://github.com/spiral/guide/blob/master/components/events.md)
 * [Pagination] (https://github.com/spiral/guide/blob/master/components/pagination.md)
 * [Tokenizer] (https://github.com/spiral/guide/blob/master/components/tokenizer.md)
 * [**Validation**] (https://github.com/spiral/guide/blob/master/components/validation.md)
