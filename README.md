@@ -18,4 +18,4 @@ Other documentation articles realted to Spiral ODM component:
 Please do not open issue tickets in this github project unless they are related to integration process. Use [Components Respository](https://github.com/spiral/components) for ODM related issues.
 
 ## Dependencies
-At this moment such module depends on whole set of spiral components and their nested dependencies, however this state is kept only until every component will get it's own repository.
+At this moment such module depends on whole set of spiral components and their nested dependencies, however this state is kept only until every component will get it's own repository (feel free to propose your help or suggestion).
