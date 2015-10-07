@@ -66,7 +66,7 @@ TODO
 
 > Document is NOT ActiveRecord (even if it looks so) NEVER put client data into constructor you either have to use static method `create` or `setFields` of your entity.
 
-See documenation to get more information.
+See documenation to get more information (DO NOT CHECK, it's in draft).
 
 ## Documentation
 
