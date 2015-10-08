@@ -156,6 +156,13 @@ Other documentation articles related to Spiral ODM component:
 * [**Validation**] (https://github.com/spiral/guide/blob/master/components/validation.md) (attention, such module uses laravel validator via `ValidatorInterface`!)
 * [Behaviour Schemas] (https://github.com/spiral/guide/blob/master/schemas.md)
 
+## Additional Tools
+Module also provides global function `dmp` which is linked to Spiral Dumper component and utilizes __defugInfo function of DataEntity model which can simplify debugging a lot:
+
+```php
+dmp($post);
+```
+
 ## Issues
 Please do not open issue tickets in this github project unless they are related to integration process. Use [Components Respository](https://github.com/spiral/components) for ODM related issues.
 
