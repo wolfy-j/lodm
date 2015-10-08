@@ -66,7 +66,7 @@ To update ODM schema simply execute: `php artisan odm:schema`
 
 Base classes:
 * DocumentEntity - embeddable model used to represent iehahrical data.
-* Document - DocumentEntity with added ActiveRecord like functionality and linking to MongoDB collection.
+* Document - DocumentEntity with added ActiveRecord like functionality and link to MongoDB collection.
 
 ```php
 class Post extends Document
