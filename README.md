@@ -85,6 +85,8 @@ class Post extends Document
 }
 ```
 
+> TimestampsTrait will automatically create timeCreated and timeUpdated fields in model schema and update them when model is saved or updated.
+
 DocumentEntity does not have ActiveRecord like functionality and can be embedded much easier:
 
 ```php
