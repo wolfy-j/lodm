@@ -90,3 +90,6 @@ Please do not open issue tickets in this github project unless they are related 
 
 ## Dependencies
 At this moment such module depends on whole set of spiral components (simply because they all in a same repo) and their nested dependencies, however this state is kept only until every component will get it's own repository (feel free to propose your help or suggestion).
+
+## Standalone usage
+Spiral ODM component can also be used outside of any framework and standalone module, check what configurations and container bindings are set in service provider.
