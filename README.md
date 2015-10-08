@@ -146,7 +146,7 @@ $post->tags->push(new Tag());
 $post->save();
 ```
 
-> Document is NOT ActiveRecord (even if it looks like it is). Never put client data into the constructor, you have to use static method `create` or `setFields` for your entity.
+> Document is NOT ActiveRecord (even if it looks like it is), it constructor accept entity data, not primary key. Never put client data into the constructor, you have to use static method `create` or `setFields` for your entity.
 
 Please check official documenation to get more information.
 
