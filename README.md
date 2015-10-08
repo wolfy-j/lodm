@@ -1,10 +1,10 @@
 # Spiral ODM for Laravel 5.1+
-LODM module is intended to bring Spiral ODM component functionality into Laravel applications. Component provides ability to manage your MongoDB data in OOP way using compositions and aggregations of your models. One of the side effects of component design makes you able to create ODM models which are not related to MongoDB and use them to represent iehahical data.
+LODM module is intended to bring the Spiral ODM component functionality into your Laravel applications. This component provides the ability to manage your MongoDB data in an OOP way using your models compositions and aggregations. One of the side effects of this component design, is that you are able to create ODM models which are not related to MongoDB and use them to represent hierarchical data.
 
 Functionality includes:
 * Compositions (nested documents)
 * Aggregations (related documents)
-* Inheritance (model childs in same collection/composition as parent)
+* Inheritance (models child in same collection/composition as parent)
 * Entity validations (Laravel validator rules can be used)
 * Read access (hidden fields)
 * Write access (secure and fillable fields)
@@ -14,9 +14,9 @@ Functionality includes:
 * Magic getters, setters and methods
 
 ## Installation
-Package installation can be performed using simple composer command `composer require wolfy-j/lodm`. Module provides two configuration files using to describe class location directories (by default whole application), set of connected MongoDB databases (ODM does not use any of Laravel database functionality) and options used to simplify document creation.
+Package installation can be performed using the simple composer command `composer require wolfy-j/lodm`. The module provides two configuration files which describe the class location directories (by default whole application), the set of connected MongoDB databases (ODM does not use any of Laravel's database functionality) and options that can simplify document creation.
 
-To publish component configurations, simply execute `php artisan vendor:publish`. Now you are able to specify database connection in `config/spiral/odm.php` file:
+To publish the component configurations, simply execute `php artisan vendor:publish`. Now you can specify the database connection in the `config/spiral/odm.php` file:
 
 ```php
 return [
@@ -53,19 +53,19 @@ return [
 ];
 ```
 
-To make ODM functionality available in your application you have to register `Spiral\LODM\Laravel\ODMServiceProvider` service provider and CLI command `Spiral\LODM\Commands\SchemaUpdate` in app.php config and ConsoleKernel accordingly.
+To include ODM functionality in your application, you have to register the service provider  `Spiral\LODM\Laravel\ODMServiceProvider` and CLI command `Spiral\LODM\Commands\SchemaUpdate` in the app.php config and ConsoleKernel accordingly.
 
-> You can read more about componenet configuration in it's official documentation.
+> You can learn more about component configuration in it's official documentation.
 
 ## Schema Updates
-Spiral ODM component utilizes so called behaviour schemas for it's entities, such technique used to singnificantly increate component performance without recuding it's functionality. Since schema stored in permanent application memory you have to update it every time you doing changes any of you `Document` or `DocumentEntity` models (like schema, default, fillable, validates and etc).
+The Spiral ODM component utilizes so called behaviour schemas for it's entities. These technique are used to significantly increase your components performance without reducing it's functionality. Since the schema is stored in the permanent application memory, you must update it each time you make any changes to your `Document` or `DocumentEntity` models (like schema, default, fillable, validates, etc).
 
-To update ODM schema simply execute: `php artisan odm:schema`
+To update your ODM schema, simply execute: `php artisan odm:schema`
 
-## Examples
+## For Example
 
 Base classes:
-* DocumentEntity - embeddable model used to represent iehahrical data.
+* DocumentEntity - embeddable model used to represent hierarchical data.
 * Document - DocumentEntity with added ActiveRecord like functionality and link to MongoDB collection.
 
 ```php
@@ -85,9 +85,9 @@ class Post extends Document
 }
 ```
 
-> TimestampsTrait will automatically create timeCreated and timeUpdated fields in model schema and update them when model is saved or updated.
+> TimestampsTrait will automatically create the timeCreated and timeUpdated fields in your model schema and update them when the model is saved or updated.
 
-DocumentEntity does not have ActiveRecord like functionality and can be embedded much easier:
+DocumentEntity does not have ActiveRecord like functionality and can be embedded much simpler:
 
 ```php
 class Author extends DocumentEntity
@@ -115,7 +115,7 @@ class Comment extends Document
 }
 ```
 
-Selection can be performed using methods `find`, `findOne` and `findByPK`:
+Selection can be performed using the methods `find`, `findOne` and `findByPK`:
 
 ```php
 foreach (Post::find() as $post) {
@@ -125,7 +125,7 @@ foreach (Post::find() as $post) {
 }
 ```
 
-You can create new entity using `new` keyword and `setFields` method, or static method `create`:
+You can create a new entity using the `new` keyword and `setFields` method or the static method `create`:
 
 ```php
 $post = new Post([
@@ -138,7 +138,7 @@ if(!$post->save()) {
 }
 ```
 
-ODM also can support MongoDB atomic operations using it's accessors and compositions:
+ODM can also support MongoDB atomic operations using it's accessors and compositions:
 
 ```php
 $post = Post::findByPK($mongoID);
@@ -146,16 +146,16 @@ $post->tags->push(new Tag());
 $post->save();
 ```
 
-> Document is NOT ActiveRecord (even if it looks so) NEVER put client data into constructor you either have to use static method `create` or `setFields` of your entity.
+> Document is NOT ActiveRecord (even if it looks like it is). NEVER put client data into the constructor. You have to use static method `create` or `setFields` for your entity.
 
 Please check official documenation to get more information (DO NOT CHECK YET, it's in draft).
 
 ## Documentation
 
-To check how to manipulate with Documents read about it's parent model [DataEntity](https://github.com/spiral/guide/blob/master/components/entity.md).
-Documentation for ODM Component with examples can be found on [this page](https://github.com/spiral/guide/blob/master/odm/overview.md) - WILL BE UPDATED THIS WEEK (in my drafts for now). To find how to use Documents outside of MongoDB scope check this [documentation](https://github.com/spiral/guide/blob/master/odm/standalone.md) - IN DRAFT.
+To manipulate using Documents, read about it's parent model [DataEntity](https://github.com/spiral/guide/blob/master/components/entity.md).
+The documentation for the ODM Component with examples can be found here on [this page](https://github.com/spiral/guide/blob/master/odm/overview.md) - WILL BE UPDATED THIS WEEK (in my drafts for now). To find out how to use Documents outside of MongoDB scope, check out the following [documentation](https://github.com/spiral/guide/blob/master/odm/standalone.md) - IN DRAFT.
 
-You can also find list of available spiral components including Templater, ORM, Storage Manager and etc [here](https://github.com/spiral/components).
+You can also find a list of available Spiral components including Templater, ORM, Storage Manager, etc [here](https://github.com/spiral/components).
 
 Other documentation articles related to Spiral ODM component:
 * [The Design] (https://github.com/spiral/guide/blob/master/framework/design.md) 
@@ -164,21 +164,21 @@ Other documentation articles related to Spiral ODM component:
 * [**DataEntity Model**] (https://github.com/spiral/guide/blob/master/components/entity.md)
 * [Pagination] (https://github.com/spiral/guide/blob/master/components/pagination.md)
 * [Tokenizer] (https://github.com/spiral/guide/blob/master/components/tokenizer.md)
-* [**Validation**] (https://github.com/spiral/guide/blob/master/components/validation.md) (attention, such module uses laravel validator via `ValidatorInterface`!)
+* [**Validation**] (https://github.com/spiral/guide/blob/master/components/validation.md) (attention, this module uses Laravel validator via `ValidatorInterface`!)
 * [Behaviour Schemas] (https://github.com/spiral/guide/blob/master/schemas.md)
 
 ## Additional Tools
-Module also provides global function `dmp` which is linked to Spiral Dumper component and utilizes __defugInfo function of DataEntity model which can simplify debugging a lot as it will dump only valuable information:
+Module also provides the global function `dmp`, which is linked to the Spiral Dumper component and utilizes __defugInfo function of DataEntity model. This can simplify debugging as it will dump only valuable information:
 
 ```php
 dmp($post);
 ```
 
 ## Issues
-Please do not open issue tickets in this github project unless they are related to integration process. Use [Components Respository](https://github.com/spiral/components) for ODM related issues.
+Please do not open issue tickets in this github project unless they are related to the integration process. Use [Components Respository](https://github.com/spiral/components) for ODM related issues.
 
 ## Dependencies
-At this moment such module depends on whole set of spiral components (simply because they all in a same repo) and their nested dependencies, however this state is kept only until every component will get it's own repository (feel free to propose your help or suggestion).
+At this moment, this module depends on whole set of Spiral components (simply because they are all placed in the same repo) and their nested dependencies. However, this state is only kept until every component gets it's own repository (Please feel free to propose any ideas or suggestions for better ways to do this).
 
 ## Standalone usage
-Spiral ODM component can also be used outside of any framework as standalone module, check what configurations and container bindings are set in service provider.
+The Spiral ODM component can also be used outside of any framework as a standalone module. Just check what  configurations and container bindings are set in the service provider.
