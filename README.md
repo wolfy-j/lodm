@@ -118,8 +118,11 @@ foreach (Post::find() as $post) {
 ```
 
 ```php
-$post = new Post();
-$post->author = new Author(...);
+$post = new Post([
+    'author'=>new Author(...)
+]);
+$post->setFields($this->request->all());
+
 if(!$post->save()) {
     dmp($post->getErrors());
 }
