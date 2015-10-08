@@ -148,12 +148,12 @@ $post->save();
 
 > Document is NOT ActiveRecord (even if it looks like it is). NEVER put client data into the constructor. You have to use static method `create` or `setFields` for your entity.
 
-Please check official documenation to get more information (DO NOT CHECK YET, it's in draft).
+Please check official documenation to get more information.
 
 ## Documentation
 
 To efficiently manipulate Documents, read about it's parent model [DataEntity](https://github.com/spiral/guide/blob/master/components/entity.md).
-The documentation for the ODM Component with examples can be found here on [this page](https://github.com/spiral/guide/blob/master/odm/overview.md) - WILL BE UPDATED THIS WEEK (in my drafts for now). To find out how to use Documents outside of MongoDB scope, check out the following [documentation](https://github.com/spiral/guide/blob/master/odm/standalone.md) - IN DRAFT.
+The documentation for the ODM Component with examples can be found here on [this page](https://github.com/spiral/guide/blob/master/odm/overview.md). To find out how to use Documents outside of MongoDB scope, check out the following [standalone tutorial](https://github.com/spiral/guide/blob/master/odm/standalone.md).
 
 You can also find a list of available Spiral components including Templater, ORM, Storage Manager, etc [here](https://github.com/spiral/components).
 
