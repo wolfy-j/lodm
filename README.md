@@ -152,6 +152,7 @@ Please check official documenation to get more information (DO NOT CHECK YET, it
 
 ## Documentation
 
+To check how to manipulate with Documents read about it's parent model [DataEntity](https://github.com/spiral/guide/blob/master/components/entity.md).
 Documentation for ODM Component with examples can be found on [this page](https://github.com/spiral/guide/blob/master/odm/overview.md) - WILL BE UPDATED THIS WEEK (in my drafts for now). To find how to use Documents outside of MongoDB scope check this [documentation](https://github.com/spiral/guide/blob/master/odm/standalone.md) - IN DRAFT.
 
 You can also find list of available spiral components including Templater, ORM, Storage Manager and etc [here](https://github.com/spiral/components).
