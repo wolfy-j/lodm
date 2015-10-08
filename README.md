@@ -115,6 +115,8 @@ class Comment extends Document
 }
 ```
 
+Selection can be performed using methods `find`, `findOne` and `findByPK`:
+
 ```php
 foreach (Post::find() as $post) {
     dmp($post->author);
@@ -122,6 +124,8 @@ foreach (Post::find() as $post) {
     echo $post->comments()->count();
 }
 ```
+
+You can create new entity using `new` keyword and `setFields` method, or static method `create`:
 
 ```php
 $post = new Post([
