@@ -125,7 +125,7 @@ foreach (Post::find() as $post) {
 
 ```php
 $post = new Post([
-    'author'=>new Author(...)
+    'author' => new Author(...)
 ]);
 $post->setFields($this->request->all());
 
