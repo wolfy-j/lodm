@@ -128,6 +128,14 @@ if(!$post->save()) {
 }
 ```
 
+ODM also can support MongoDB atomic operations using it's accessors and compositions:
+
+```php
+$post = Post::findByPK($mongoID);
+$post->tags->push(new Tag());
+$post->save();
+```
+
 > Document is NOT ActiveRecord (even if it looks so) NEVER put client data into constructor you either have to use static method `create` or `setFields` of your entity.
 
 See documenation to get more information (DO NOT CHECK, it's in draft).
