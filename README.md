@@ -82,7 +82,7 @@ Other documentation articles related to Spiral ODM component:
 * [**DataEntity Model**] (https://github.com/spiral/guide/blob/master/components/entity.md)
 * [Pagination] (https://github.com/spiral/guide/blob/master/components/pagination.md)
 * [Tokenizer] (https://github.com/spiral/guide/blob/master/components/tokenizer.md)
-* [**Validation**] (https://github.com/spiral/guide/blob/master/components/validation.md)
+* [**Validation**] (https://github.com/spiral/guide/blob/master/components/validation.md) (attention, such module uses laravel validator via `ValidatorInterface`!)
 * [Behaviour Schemas] (https://github.com/spiral/guide/blob/master/schemas.md)
 
 ## Issues
