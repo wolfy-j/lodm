@@ -63,7 +63,67 @@ Spiral ODM component utilizes so called behaviour schemas for it's entities, suc
 To update ODM schema simply execute: `php artisan odm:schema`
 
 ## Examples
-TODO
+
+```php
+class Post extends Document
+{
+    use TimestampsTrait;
+
+    protected $schema = [
+        '_id'      => 'MongoId',
+        'author'   => Author::class,
+        'comments' => [
+            self::MANY => Comment::class,
+            ['postId' => 'self::_id']
+        ],
+        'tags'    => [Tag::class]
+    ];
+}
+```
+
+DocumentEntity does not have ActiveRecord like functionality and can be embedded much easier:
+
+```php
+class Author extends DocumentEntity
+{
+    protected $schema = [
+        'name' => 'string',
+    ];
+}
+```
+
+Aggregation can be declared as ONE or MANY:
+
+```php
+class Comment extends Document
+{
+    use TimestampsTrait;
+
+    protected $schema = [
+        '_id'     => 'MongoId',
+        'postId'  => 'MongoId',
+        'post'    => [self::ONE => Post::class, ['_id' => 'self::postId']],
+        'author'  => Author::class,
+        'message' => 'string'
+    ];
+}
+```
+
+```php
+foreach (Post::find() as $post) {
+    dmp($post->author);
+    
+    echo $post->comments()->count();
+}
+```
+
+```php
+$post = new Post();
+$post->author = new Author(...);
+if(!$post->save()) {
+    dmp($post->getErrors());
+}
+```
 
 > Document is NOT ActiveRecord (even if it looks so) NEVER put client data into constructor you either have to use static method `create` or `setFields` of your entity.
 
