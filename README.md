@@ -146,9 +146,7 @@ $post->tags->push(new Tag());
 $post->save();
 ```
 
-> ODM Document is hybrid of ActiveRecord and DataMapper, it constructor accept entity data, not primary key. Never put client data into the constructor, you have to use static method `create` or `setFields` for your entity.
-
-Please check official documenation to get more information.
+> ODM Document is hybrid of ActiveRecord and DataMapper, it constructor accept entity data, not primary key. Never put client data into the constructor, you have to use static methods `create` or `setFields` to pass data thought set of setters.
 
 ## Documentation
 
