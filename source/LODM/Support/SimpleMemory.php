@@ -4,7 +4,7 @@
  *
  * @license   MIT
  * @author    Anton Titov (Wolfy-J)
- * @copyright ©2009-2015
+ * @copyright Â©2009-2015
  */
 namespace Spiral\LODM\Support;
 
@@ -74,7 +74,7 @@ class SimpleMemory implements HippocampusInterface
         $filename = $location . $name . '.' . static::EXTENSION;
 
         try {
-            //We are going to store data in php form, in this OpCache will work for us
+            //We are going to store data in php form, in this case OpCache will work for us
             file_put_contents($filename, '<?php return ' . var_export($data, true) . ';');
         } catch (\ErrorException $exception) {
             //To be better catchable
