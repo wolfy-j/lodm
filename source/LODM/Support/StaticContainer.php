@@ -9,6 +9,7 @@
 namespace Spiral\LODM\Support;
 
 use Spiral\Core\Component;
+use Spiral\Core\Container;
 use Spiral\Core\ContainerInterface;
 
 /**
@@ -24,13 +25,16 @@ use Spiral\Core\ContainerInterface;
 class StaticContainer extends Component
 {
     /**
-     * Mount global container. staticContainer method is protected and available only from
-     * components, so we have to define wrapper method.
+     * Initiate global/static container which brings some sugar to code.
      *
-     * @param ContainerInterface $container
+     * @return ContainerInterface
      */
-    public static function mountContainer(ContainerInterface $container)
+    public static function initContainer()
     {
-        self::staticContainer($container);
+        if (!empty(self::staticContainer())) {
+            return self::staticContainer();
+        }
+
+        return self::staticContainer(new Container());
     }
 }

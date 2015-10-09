@@ -31,9 +31,6 @@ class ODMServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //We can do it this way
-        $container = new Container();
-
         /**
          * Some spiral functions require global/static container, for example it provides you ability to
          * write code like:
@@ -44,7 +41,7 @@ class ODMServiceProvider extends ServiceProvider
          *
          * new Post([], null, $odm);
          */
-        StaticContainer::mountContainer($container);
+        $container = StaticContainer::initContainer();
 
         //Since laravel uses this method for bindings, we can use it too
         $container->bind(TokenizerInterface::class, Tokenizer::class);
