@@ -58,7 +58,7 @@ To include ODM functionality in your application, you have to register the servi
 > You can learn more about component configuration in it's official documentation.
 
 ## Schema Updates
-The Spiral ODM component utilizes so called behaviour schemas for it's entities. These technique are used to significantly increase your components performance without reducing it's functionality. Since the schema is stored in the permanent application memory, you must update it each time you make any changes to your `Document` or `DocumentEntity` models (like schema, default, fillable, validates, etc).
+The Spiral ODM component utilizes behaviour schemas for it's entities. These technique are used to significantly increase your components performance without reducing it's functionality. Since the schema is stored in the permanent application memory, you must update it each time you make any changes to your `Document` or `DocumentEntity` models (like schema, default, fillable, validates, etc).
 
 To update your ODM schema, simply execute: `php artisan odm:schema`
 
