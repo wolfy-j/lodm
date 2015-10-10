@@ -1,4 +1,4 @@
-# LODM, Spiral ODM for Laravel 5.1+ (beta)
+# LODM, ODM for Laravel 5.1+ (beta)
 LODM module is intended to bring the Spiral ODM component functionality into your Laravel applications. This component provides the ability to manage your MongoDB data in an OOP way using your models compositions and aggregations. One of the side effects of this component design, is that you are able to create ODM models which are not related to MongoDB and use them to represent hierarchical data.
 
 Functionality includes:
