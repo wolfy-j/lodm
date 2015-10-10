@@ -13,6 +13,8 @@ Functionality includes:
 * Field accessors (for example Carbon reader/writer for MongoDB fields)
 * Magic getters, setters and methods
 
+> Attention, at this moment pagination can only be performed manually, need help to integrate laravel paginator as `Spiral\Pagination\PaginatorInterface`.
+
 ## Installation
 Package installation can be performed using the simple composer command `composer require wolfy-j/lodm`. The module provides two configuration files which describe the class location directories (by default whole application), the set of connected MongoDB databases (ODM does not use any of Laravel's database functionality) and options that can simplify document creation.
 
