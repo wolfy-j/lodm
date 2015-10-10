@@ -151,7 +151,7 @@ $post->save();
 ## Documentation
 
 To efficiently manipulate Documents, read about it's parent model [DataEntity](https://github.com/spiral/guide/blob/master/components/entity.md).
-The documentation for the ODM Component with examples can be found here on [this page](https://github.com/spiral/guide/blob/master/odm/overview.md). To find out how to use Documents outside of MongoDB scope, check out the following [standalone tutorial](https://github.com/spiral/guide/blob/master/odm/standalone.md).
+The documentation for the ODM Component with examples can be found here on [this page](https://github.com/spiral/guide/blob/master/odm/basics.md). Extended usage with compositions, aggreagations and inheratance is [located here] (https://github.com/spiral/guide/blob/master/odm/oop.md). To find out how to use Documents outside of MongoDB scope, check out the following [standalone tutorial](https://github.com/spiral/guide/blob/master/odm/standalone.md).
 
 Other documentation articles related to Spiral ODM component:
 * [The Design] (https://github.com/spiral/guide/blob/master/framework/design.md) 
