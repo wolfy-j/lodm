@@ -180,3 +180,6 @@ At this moment, this module depends on whole set of Spiral components (simply be
 
 ## Standalone usage
 The Spiral ODM component can also be used outside of any framework as a standalone module. Just check what  configurations and container bindings are set in the service provider.
+
+## Contributing
+Read [contribution notes here](https://github.com/spiral/guide/blob/master/framework/contributing.md).
