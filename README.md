@@ -60,6 +60,14 @@ return [
 
 > You can learn more about component configuration in it's official documentation.
 
+YOu can also add aliases for ODM models in the config\app.php file:
+
+```
+    ...
+    'Document'         => 'Spiral\ODM\Document',
+    'DocumentEntity'   => 'Spiral\ODM\DocumentEntity', //Complex types
+```
+
 ## Schema Updates
 The Spiral ODM component utilizes behaviour schemas for it's entities. These technique are used to significantly increase your components performance without reducing it's functionality. Since the schema is stored in the permanent application memory, you must update it each time you make any changes to your `Document` or `DocumentEntity` models (like schema, default, fillable, validates, etc).
 
