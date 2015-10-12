@@ -60,7 +60,7 @@ return [
 
 > You can learn more about component configuration in it's official documentation.
 
-YOu can also add aliases for ODM models in the config\app.php file:
+YOu can also add `aliases` for ODM models in the config\app.php file:
 
 ```
     ...
