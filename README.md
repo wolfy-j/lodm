@@ -81,11 +81,12 @@ class Post extends Document
     protected $schema = [
         '_id'      => 'MongoId',
         'author'   => Author::class,
+        'tags'     => [Tag::class],
+        //Aggregations
         'comments' => [
             self::MANY => Comment::class,
             ['postId' => 'self::_id']
         ],
-        'tags'    => [Tag::class]
     ];
 }
 ```
@@ -113,9 +114,11 @@ class Comment extends Document
     protected $schema = [
         '_id'     => 'MongoId',
         'postId'  => 'MongoId',
-        'post'    => [self::ONE => Post::class, ['_id' => 'self::postId']],
         'author'  => Author::class,
-        'message' => 'string'
+        'message' => 'string',
+        
+        //Aggregations
+        'post'    => [self::ONE => Post::class, ['_id' => 'self::postId']],
     ];
 }
 ```
