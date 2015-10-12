@@ -120,6 +120,10 @@ class Comment extends Document
         //Aggregations
         'post'    => [self::ONE => Post::class, ['_id' => 'self::postId']],
     ];
+    
+    protected $validates = [
+        'message' => 'required'
+    ];
 }
 ```
 
