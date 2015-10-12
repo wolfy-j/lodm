@@ -4,7 +4,7 @@
  *
  * @license   MIT
  * @author    Anton Titov (Wolfy-J)
- * @copyright ©2009-2015
+ * @copyright Â©2009-2015
  */
 namespace Spiral\LODM\Laravel;
 
@@ -80,7 +80,7 @@ class LaravelValidator implements ValidatorInterface
         /**
          * @var \Illuminate\Validation\Validator $validator
          */
-        $validator = Validator::make($this->data, $this->rules);
+        $validator = \Illuminate\Validation\Validator::make($this->data, $this->rules);
 
         //We have to normalize messages
         $errors = [];
