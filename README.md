@@ -64,6 +64,8 @@ The Spiral ODM component utilizes behaviour schemas for it's entities. These tec
 
 To update your ODM schema, simply execute: `php artisan odm:schema`
 
+> Schema update is only one thing you have to do to make your schemas work.
+
 ## For Example
 
 Base classes:
