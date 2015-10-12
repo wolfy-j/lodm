@@ -19,6 +19,8 @@ Functionality includes:
 ## Installation
 Package installation can be performed using the simple composer command `composer require wolfy-j/lodm`. The module provides two configuration files which describe the class location directories (by default whole application), the set of connected MongoDB databases (ODM does not use any of Laravel's database functionality) and options that can simplify document creation.
 
+To include ODM functionality in your application, you have to register the service provider  `Spiral\LODM\Laravel\ODMServiceProvider` and CLI command `Spiral\LODM\Commands\SchemaUpdate` in the app.php config and ConsoleKernel accordingly.
+
 To publish the component configurations, simply execute `php artisan vendor:publish`. Now you can specify the database connection in the `config/spiral/odm.php` file:
 
 ```php
@@ -55,8 +57,6 @@ return [
     ]
 ];
 ```
-
-To include ODM functionality in your application, you have to register the service provider  `Spiral\LODM\Laravel\ODMServiceProvider` and CLI command `Spiral\LODM\Commands\SchemaUpdate` in the app.php config and ConsoleKernel accordingly.
 
 > You can learn more about component configuration in it's official documentation.
 
