@@ -80,7 +80,7 @@ class LaravelValidator implements ValidatorInterface
         /**
          * @var \Illuminate\Validation\Validator $validator
          */
-        $validator = \Illuminate\Validation\Validator::make($this->data, $this->rules);
+        $validator = \Validator::make($this->data, $this->rules);
 
         //We have to normalize messages
         $errors = [];
