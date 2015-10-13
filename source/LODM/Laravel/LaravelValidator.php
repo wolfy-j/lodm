@@ -46,6 +46,8 @@ class LaravelValidator implements ValidatorInterface
     public function setData($data)
     {
         $this->data = $data;
+
+        return $this;
     }
 
     /**
@@ -54,6 +56,8 @@ class LaravelValidator implements ValidatorInterface
     public function setRules(array $validates)
     {
         $this->rules = $validates;
+
+        return $this;
     }
 
     /**
