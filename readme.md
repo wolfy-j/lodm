@@ -41,7 +41,7 @@ class Post extends Document
         //Array of sub documents
         'tags'     => [Tag::class],
         
-        //Aggregations (references)
+        //Aggregation (reference)
         'comments' => [
             self::MANY => Comment::class,
             ['postId' => 'self::_id']
