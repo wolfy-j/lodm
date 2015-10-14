@@ -95,6 +95,8 @@ You can create a new entity using the `new` keyword and `setFields` method or th
 $post = new Post([
     'author' => new Author(...)
 ]);
+
+//Mass assignment
 $post->setFields($this->request->all());
 
 if(!$post->save()) {
