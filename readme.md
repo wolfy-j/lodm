@@ -5,7 +5,7 @@
 LODM provides the ability to manage your MongoDB data in an OOP way using your models compositions, aggregations and **inheritance**. You are also able to create ODM models which are not related to MongoDB and use them to represent hierarchical data like XML, API responses and etc.
 
 Functionality includes:
-* Compositions (nested documents)
+* Compositions (embedded documents)
 * Aggregations (related documents)
 * **Inheritance** (models child in same collection/composition as parent)
 * MongoDB Atomic operations
