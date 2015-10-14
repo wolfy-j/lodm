@@ -110,6 +110,12 @@ $post->tags->push(new Tag());
 $post->save();
 ```
 
+Compatible with Carbon:
+
+```php
+$post->timeCreated->setTime(...);
+```
+
 ## Installation
 Package installation can be performed using the simple composer command `composer require wolfy-j/lodm`. 
 
