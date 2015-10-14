@@ -2,12 +2,12 @@
 [![Latest Stable Version](https://poser.pugx.org/wolfy-j/lodm/v/stable)](https://packagist.org/packages/wolfy-j/lodm) [![Total Downloads](https://poser.pugx.org/wolfy-j/lodm/downloads)](https://packagist.org/packages/wolfy-j/lodm) 
 [![Latest Unstable Version](https://poser.pugx.org/wolfy-j/lodm/v/unstable)](https://packagist.org/packages/wolfy-j/lodm) [![License](https://poser.pugx.org/spiral/framework/license)](https://packagist.org/packages/wolfy-j/lodm)
 
-LODM provides the ability to manage your MongoDB data in an OOP way using embeddance, referenced documents and **inheritance**. You are also able to create ODM models which are not related to MongoDB and use them to represent hierarchical data like XML, API responses and etc.
+LODM provides the ability to manage your MongoDB data in an OOP way using embeddance, referenced documents and inheritance. You are also able to create ODM models which are not related to MongoDB and use them to represent hierarchical data like XML, API responses and etc.
 
 Functionality includes:
 * Compositions (embedded documents)
 * Aggregations (related/referenced documents)
-* **Inheritance** (models child in same collection/composition as parent)
+* Inheritance (models child in same collection/composition as parent)
 * MongoDB Atomic operations
 * Entity validations ([Laravel validator](https://github.com/wolfy-j/lodm/blob/master/source/LODM/Laravel/LaravelValidator.php) rules can be used)
 * Read access (hidden fields)
