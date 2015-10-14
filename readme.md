@@ -16,6 +16,7 @@ Functionality includes:
 * Field mutators (getters and setters)
 * Field accessors (for example Carbon reader/writer for MongoDate fields)
 * Magic getters, setters and methods
+* Fast, by splitting runtime and compliation part ODM models will work very fast!
 
 > Attention, at this moment pagination can only be performed manually, need help to integrate laravel paginator as `Spiral\Pagination\PaginatorInterface`.
 
