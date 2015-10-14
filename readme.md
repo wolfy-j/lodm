@@ -105,7 +105,7 @@ if(!$post->save()) {
 }
 ```
 
-ODM also support cascade/nested filling and validation:
+Try cascade/nested filling and validation:
 
 ```php
 $post->setFields([
