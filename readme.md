@@ -213,7 +213,7 @@ Other documentation articles related to Spiral ODM component:
 * [Behaviour Schemas] (https://github.com/spiral/guide/blob/master/schemas.md)
 
 ## Additional Tools
-Module also provides the global function `dmp`, which is linked to the Spiral Dumper component and utilizes __defugInfo function of DataEntity model. This can simplify debugging as it will dump only valuable information:
+Module also provides the global function `dmp`, which is linked to the Spiral Dumper component and utilizes [__defugInfo](http://php.net/manual/en/language.oop5.magic.php) function of DataEntity model. This can simplify debugging as it will dump only valuable information:
 
 ```php
 dmp($post);
