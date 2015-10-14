@@ -105,6 +105,18 @@ if(!$post->save()) {
 }
 ```
 
+ODM also support cascade/nested filling and validation:
+
+```php
+$post->setFields([
+    'author' => [
+        'name' => ''
+    ]
+]);
+
+dump($post->getErrors());
+```
+
 ODM can also support MongoDB atomic operations using it's accessors and compositions:
 
 ```php
