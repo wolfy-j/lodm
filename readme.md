@@ -34,7 +34,11 @@ class Post extends Document
 
     protected $schema = [
         '_id'      => 'MongoId',
+        
+        //Simple embeddance
         'author'   => Author::class,
+        
+        //Array of sub documents
         'tags'     => [Tag::class],
         
         //Aggregations (references)
