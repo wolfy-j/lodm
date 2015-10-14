@@ -74,7 +74,10 @@ class Comment extends Document
         'message' => 'string',
         
         //Aggregations
-        'post'    => [self::ONE => Post::class, ['_id' => 'self::postId']],
+        'post'    => [
+            self::ONE => Post::class,
+            ['_id' => 'self::postId']
+        ],
     ];
     
     //Self validation
