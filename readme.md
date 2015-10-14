@@ -1,4 +1,4 @@
-# LODM, ODM with inheritance for Laravel
+# ODM with inheritance for Laravel
 [![Latest Stable Version](https://poser.pugx.org/wolfy-j/lodm/v/stable)](https://packagist.org/packages/wolfy-j/lodm) [![Total Downloads](https://poser.pugx.org/wolfy-j/lodm/downloads)](https://packagist.org/packages/wolfy-j/lodm) 
 [![Latest Unstable Version](https://poser.pugx.org/wolfy-j/lodm/v/unstable)](https://packagist.org/packages/wolfy-j/lodm) [![License](https://poser.pugx.org/spiral/framework/license)](https://packagist.org/packages/wolfy-j/lodm)
 
