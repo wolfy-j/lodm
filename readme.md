@@ -1,4 +1,7 @@
 # LODM, ODM with inheritance for Laravel 5.1+ (beta)
+[![Latest Stable Version](https://poser.pugx.org/wolfy-j/lodm/v/stable)](https://packagist.org/packages/wolfy-j/lodm) [![Total Downloads](https://poser.pugx.org/wolfy-j/lodm/downloads)](https://packagist.org/packages/wolfy-j/lodm) 
+[![Latest Unstable Version](https://poser.pugx.org/wolfy-j/lodm/v/unstable)](https://packagist.org/packages/wolfy-j/lodm) [![License](https://poser.pugx.org/wolfy-j/lodm/license)](https://packagist.org/packages/wolfy-j/lodm)
+
 LODM module is intended to bring the Spiral ODM component functionality into your Laravel applications. This component provides the ability to manage your MongoDB data in an OOP way using your models compositions, aggregations and inheritance. 
 
 One of the side effects of this component design, is that you are able to create ODM models which are not related to MongoDB and use them to represent hierarchical data.
