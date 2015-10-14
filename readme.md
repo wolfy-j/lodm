@@ -7,7 +7,7 @@ LODM provides the ability to manage your MongoDB data in an OOP way using your m
 Functionality includes:
 * Compositions (nested documents)
 * Aggregations (related documents)
-* Inheritance (models child in same collection/composition as parent)
+* **Inheritance** (models child in same collection/composition as parent)
 * MongoDB Atomic operations
 * Entity validations ([Laravel validator](https://github.com/wolfy-j/lodm/blob/master/source/LODM/Laravel/LaravelValidator.php) rules can be used)
 * Read access (hidden fields)
