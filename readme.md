@@ -21,6 +21,97 @@ Functionality includes:
 
 > Attention, at this moment pagination can only be performed manually, need help to integrate laravel paginator as `Spiral\Pagination\PaginatorInterface`.
 
+
+## For Example
+
+Base classes:
+* `Spiral\ODM\DocumentEntity` - one piece of embeddable data.
+* `Spiral\ODM\Document` - DocumentEntity with added ActiveRecord like functionality and link to MongoDB collection.
+
+```php
+class Post extends Document
+{
+    //Adds timeCreated and timeUpdated fields
+    use TimestampsTrait;
+
+    protected $schema = [
+        '_id'      => 'MongoId',
+        'author'   => Author::class,
+        'tags'     => [Tag::class],
+        
+        //Aggregations (references)
+        'comments' => [
+            self::MANY => Comment::class,
+            ['postId' => 'self::_id']
+        ],
+    ];
+}
+```
+
+```php
+class Author extends DocumentEntity
+{
+    protected $schema = [
+        'name' => 'string',
+    ];
+}
+```
+
+Aggregation can be declared to ONE or MANY documents:
+
+```php
+class Comment extends Document
+{
+    //Adds timeCreated and timeUpdated fields
+    use TimestampsTrait;
+
+    protected $schema = [
+        '_id'     => 'MongoId',
+        'postId'  => 'MongoId',
+        'author'  => Author::class,
+        'message' => 'string',
+        
+        //Aggregations
+        'post'    => [self::ONE => Post::class, ['_id' => 'self::postId']],
+    ];
+    
+    protected $validates = [
+        'message' => 'required'
+    ];
+}
+```
+
+Selection can be performed using the methods `find`, `findOne` and `findByPK`:
+
+```php
+foreach (Post::find() as $post) {
+    dump($post->author->getName());
+    
+    echo $post->comments()->count();
+}
+```
+
+You can create a new entity using the `new` keyword and `setFields` method or the static method `create`:
+
+```php
+$post = new Post([
+    'author' => new Author(...)
+]);
+$post->setFields($this->request->all());
+
+if(!$post->save()) {
+    dump($post->getErrors());
+}
+```
+
+ODM can also support MongoDB atomic operations using it's accessors and compositions:
+
+```php
+$post = Post::findByPK($mongoID);
+$post->tags->push(new Tag());
+$post->save();
+```
+
 ## Installation
 Package installation can be performed using the simple composer command `composer require wolfy-j/lodm`. 
 
@@ -79,99 +170,6 @@ The Spiral ODM component utilizes behaviour schemas for it's entities. These tec
 To update your ODM schema, simply execute: `php artisan odm:schema`
 
 > Schema update is only one thing you have to do to make your models work.
-
-## For Example
-
-Base classes:
-* `Spiral\ODM\DocumentEntity` - embeddable model used to represent hierarchical data.
-* `Spiral\ODM\Document` - DocumentEntity with added ActiveRecord like functionality and link to MongoDB collection.
-
-```php
-class Post extends Document
-{
-    use TimestampsTrait;
-
-    protected $schema = [
-        '_id'      => 'MongoId',
-        'author'   => Author::class,
-        'tags'     => [Tag::class],
-        //Aggregations
-        'comments' => [
-            self::MANY => Comment::class,
-            ['postId' => 'self::_id']
-        ],
-    ];
-}
-```
-
-> TimestampsTrait will automatically create the timeCreated and timeUpdated fields in your model schema and update them when the model is saved or updated.
-
-DocumentEntity does not have ActiveRecord like functionality and can be embedded much simpler:
-
-```php
-class Author extends DocumentEntity
-{
-    protected $schema = [
-        'name' => 'string',
-    ];
-}
-```
-
-Aggregation can be declared as ONE or MANY:
-
-```php
-class Comment extends Document
-{
-    use TimestampsTrait;
-
-    protected $schema = [
-        '_id'     => 'MongoId',
-        'postId'  => 'MongoId',
-        'author'  => Author::class,
-        'message' => 'string',
-        
-        //Aggregations
-        'post'    => [self::ONE => Post::class, ['_id' => 'self::postId']],
-    ];
-    
-    protected $validates = [
-        'message' => 'required'
-    ];
-}
-```
-
-Selection can be performed using the methods `find`, `findOne` and `findByPK`:
-
-```php
-foreach (Post::find() as $post) {
-    dmp($post->author);
-    
-    echo $post->comments()->count();
-}
-```
-
-You can create a new entity using the `new` keyword and `setFields` method or the static method `create`:
-
-```php
-$post = new Post([
-    'author' => new Author(...)
-]);
-$post->setFields($this->request->all());
-
-if(!$post->save()) {
-    dmp($post->getErrors());
-}
-```
-
-ODM can also support MongoDB atomic operations using it's accessors and compositions:
-
-```php
-$post = Post::findByPK($mongoID);
-$post->tags->push(new Tag());
-$post->save();
-```
-
-> ODM Document constructor accept entity data, not primary key, never put client data into the constructor, you have to use static methods `create` or `setFields` to pass data thought set of setters.
 
 ## Documentation
 
