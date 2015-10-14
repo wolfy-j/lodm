@@ -73,6 +73,7 @@ class Comment extends Document
         'post'    => [self::ONE => Post::class, ['_id' => 'self::postId']],
     ];
     
+    //Self validation
     protected $validates = [
         'message' => 'required'
     ];
