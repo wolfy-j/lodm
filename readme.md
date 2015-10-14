@@ -14,7 +14,7 @@ Functionality includes:
 * Write access (secure and fillable fields)
 * JsonSerialization
 * Field mutators (getters and setters)
-* Field accessors (for example Carbon reader/writer for MongoDB fields)
+* Field accessors (for example Carbon reader/writer for MongoDate fields)
 * Magic getters, setters and methods
 
 > Attention, at this moment pagination can only be performed manually, need help to integrate laravel paginator as `Spiral\Pagination\PaginatorInterface`.
