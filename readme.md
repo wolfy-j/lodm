@@ -19,7 +19,6 @@ Functionality includes:
 
 > Attention, at this moment pagination can only be performed manually, need help to integrate laravel paginator as `Spiral\Pagination\PaginatorInterface`.
 
-
 ## For Example
 
 Base classes:
