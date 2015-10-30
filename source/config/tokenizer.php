@@ -8,7 +8,6 @@ return [
         app_path('/')
     ],
     'exclude'     => [
-        //No need to exclude anything, we are not under spiral which allows to index classes
-        //in vendor folder
+        //No need to exclude anything
     ]
 ];
