@@ -4,13 +4,14 @@
  *
  * @license   MIT
  * @author    Anton Titov (Wolfy-J)
- * @copyright ©2009-2015
+ * @copyright Â©2009-2015
  */
 namespace Spiral\LODM\Laravel;
 
 use Illuminate\Support\ServiceProvider;
 use Spiral\Core\ConfiguratorInterface;
 use Spiral\Core\Container;
+use Spiral\Core\ContainerInterface;
 use Spiral\Core\HippocampusInterface;
 use Spiral\Files\FileManager;
 use Spiral\Files\FilesInterface;
@@ -42,6 +43,9 @@ class ODMServiceProvider extends ServiceProvider
          * new Post([], null, $odm);
          */
         $container = StaticContainer::initContainer();
+
+        //Self serving
+        $container->bindSingleton(ContainerInterface::class, $container);
 
         //Since laravel uses this method for bindings, we can use it too
         $container->bind(TokenizerInterface::class, Tokenizer::class);
