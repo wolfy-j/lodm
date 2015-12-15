@@ -114,8 +114,8 @@ class LaravelValidator implements ValidatorInterface
 
         //We have to normalize messages
         $errors = [];
-        foreach ($validator->errors()->getMessages() as $field => $errors) {
-            $errors[$field] = current($errors);
+        foreach ($validator->errors()->getMessages() as $field => $fieldErrors) {
+            $errors[$field] = current($fieldErrors);
         }
 
         return $this->registeredErrors + $errors;
