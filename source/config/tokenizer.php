@@ -1,14 +1,19 @@
 <?php
 /**
- * Spiral tokenizer component configuration, includes only black and white listed directories to
- * be indexed.
+ * Tokenizer and Class locator component configurations.
+ *
+ * @see TokenizerConfig
  */
 return [
+    /*
+     * Tokenizer will be performing class and invocation lookup in a following directories. Less
+     * directories - faster Tokenizer will work.
+     */
     'directories' => [
         app_path('/')
     ],
-    'exclude'     => [
-        //No need to exclude anything, we are not under spiral which allows to index classes
-        //in vendor folder
-    ]
+    /*
+     * Such paths are excluded from tokenization. You can use format compatible with Symfony Finder.
+     */
+    'exclude'     => []
 ];

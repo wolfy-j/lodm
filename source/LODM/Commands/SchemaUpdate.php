@@ -4,7 +4,6 @@
  *
  * @license   MIT
  * @author    Anton Titov (Wolfy-J)
- * @copyright ©2009-2015
  */
 namespace Spiral\LODM\Commands;
 
@@ -28,7 +27,7 @@ class SchemaUpdate extends Command
      *
      * @var string
      */
-    protected $description = 'Update ODM behaviour schema.';
+    protected $description = 'Update ODM behaviour schema and ensure needed database indexes';
 
     /**
      * @var ODM

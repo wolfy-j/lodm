@@ -4,19 +4,23 @@
  *
  * @license   MIT
  * @author    Anton Titov (Wolfy-J)
- * @copyright ©2009-2015
  */
 namespace Spiral\LODM\Laravel;
 
 use Illuminate\Support\ServiceProvider;
+use Interop\Container\ContainerInterface;
 use Spiral\Core\ConfiguratorInterface;
 use Spiral\Core\Container;
+use Spiral\Core\FactoryInterface;
 use Spiral\Core\HippocampusInterface;
+use Spiral\Core\ResolverInterface;
 use Spiral\Files\FileManager;
 use Spiral\Files\FilesInterface;
-use Spiral\LODM\Support\SimpleMemory;
-use Spiral\LODM\Support\StaticContainer;
+use Spiral\LODM\Support\Memory;
+use Spiral\LODM\Support\SharedContainer;
 use Spiral\ODM\ODM;
+use Spiral\Tokenizer\ClassLocator;
+use Spiral\Tokenizer\ClassLocatorInterface;
 use Spiral\Tokenizer\Tokenizer;
 use Spiral\Tokenizer\TokenizerInterface;
 use Spiral\Validation\ValidatorInterface;
@@ -40,11 +44,19 @@ class ODMServiceProvider extends ServiceProvider
          * provide odm instance into your document explicitly:
          *
          * new Post([], null, $odm);
+         *
+         * @var Container $container
          */
-        $container = StaticContainer::initContainer();
+        SharedContainer::initContainer($container = new Container());
+
+        //Container bindings
+        $container->bind(FactoryInterface::class, $container);
+        $container->bind(ResolverInterface::class, $container);
+        $container->bind(ContainerInterface::class, $container);
 
         //Since laravel uses this method for bindings, we can use it too
         $container->bind(TokenizerInterface::class, Tokenizer::class);
+        $container->bind(ClassLocatorInterface::class, ClassLocator::class);
 
         //Spiral has it's own validation mechanism which is represented by a simple interface
         //we can wrap laravel validation functionality and rules
@@ -60,9 +72,9 @@ class ODMServiceProvider extends ServiceProvider
 
         //ODM and some other components also use so called application memory (see doc) to store
         //behaviour schemas, we can use simple wrapper
-        $container->bindSingleton(HippocampusInterface::class, function () {
-            return new SimpleMemory(storage_path('/'));
-        });
+        $container->bindSingleton(HippocampusInterface::class, $container->make(Memory::class, [
+            'directory' => storage_path('/')
+        ]));
 
         //Ok, now can define our ODM as singleton
         $this->app->singleton(ODM::class, function () use ($container) {

@@ -1,46 +1,55 @@
 <?php
 /**
- * ODM component configuration and mapping.
- * - default database alias/name
- * - list of mongo databases associated with their server, name, profiling mode and options
- * - list of database name aliases used for injections and other operations
- * - ODM SchemaBuilder configuration
- *      - set of default mutators associated with field type
- *      - mutator aliases to be used in model definitions
+ * ODM databases and schema builder configuration.
+ *
+ * @see ODMConfig
  */
+use Spiral\LODM\Accessors;
 use Spiral\ODM\Accessors\ScalarArray;
 use Spiral\ODM\Entities\MongoDatabase;
 use Spiral\ODM\ODM;
 
 return [
+    /*
+    * Here you can specify name/alias for database to be treated as default in your application.
+    * Such database will be returned from ODM->database(null) call and also can be
+    * available using $this->db shared binding.
+    */
     'default'   => 'default',
-    'databases' => [
-        'default' => [
-            'server'    => 'mongodb://localhost:27017',
-            'profiling' => MongoDatabase::PROFILE_SIMPLE,
-            'database'  => 'spiral-empty',
-            'options'   => [
-                'connect' => true
-            ]
-        ]
-    ],
     'aliases'   => [
         'database' => 'default',
         'db'       => 'default',
         'mongo'    => 'default'
     ],
+    'databases' => [
+        'default' => [
+            'server'    => 'mongodb://localhost:27017',
+            'profiling' => MongoDatabase::PROFILE_SIMPLE,
+            'database'  => 'spiral',
+            'options'   => [
+                'connect' => true
+            ]
+        ],
+    ],
     'schemas'   => [
+        /*
+         * Set of mutators to be applied for specific field types.
+         */
         'mutators'       => [
             'int'       => ['setter' => 'intval'],
             'float'     => ['setter' => 'floatval'],
             'string'    => ['setter' => 'strval'],
+            'long'      => ['setter' => 'intval'],
             'bool'      => ['setter' => 'boolval'],
             'MongoId'   => ['setter' => [ODM::class, 'mongoID']],
             'array'     => ['accessor' => ScalarArray::class],
-            'timestamp' => ['accessor' => \Spiral\LODM\Accessors\MongoTimestamp::class],
-            'MongoDate' => ['accessor' => \Spiral\LODM\Accessors\MongoTimestamp::class]
+            'timestamp' => ['accessor' => Accessors\MongoTimestamp::class],
+            'MongoDate' => ['accessor' => Accessors\MongoTimestamp::class]
         ],
         'mutatorAliases' => [
+            /*
+             * Mutator aliases can be used to declare custom getter and setter filter methods.
+             */
         ]
     ]
 ];

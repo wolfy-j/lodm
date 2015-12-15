@@ -9,12 +9,9 @@
   ],
   "require": {
     "laravel/framework": "*",
-    "spiral/components": "*"
+    "spiral/components": "^0.8.0"
   },
   "autoload": {
-    "files": [
-      "source/functions.php"
-    ],
     "psr-4": {
       "Spiral\\": "source/"
     }

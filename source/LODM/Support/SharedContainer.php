@@ -4,13 +4,12 @@
  *
  * @license   MIT
  * @author    Anton Titov (Wolfy-J)
- * @copyright ©2009-2015
  */
 namespace Spiral\LODM\Support;
 
+use Interop\Container\ContainerInterface;
 use Spiral\Core\Component;
 use Spiral\Core\Container;
-use Spiral\Core\ContainerInterface;
 
 /**
  * Some spiral functions require global/static container, for example it provides you ability to
@@ -22,19 +21,15 @@ use Spiral\Core\ContainerInterface;
  *
  * new Post([], null, $odm);
  */
-class StaticContainer extends Component
+class SharedContainer extends Component
 {
     /**
      * Initiate global/static container which brings some sugar to code.
      *
      * @return ContainerInterface
      */
-    public static function initContainer()
+    public static function initContainer(ContainerInterface $container)
     {
-        if (!empty(self::staticContainer())) {
-            return self::staticContainer();
-        }
-
-        return self::staticContainer(new Container());
+        return self::staticContainer($container);
     }
 }

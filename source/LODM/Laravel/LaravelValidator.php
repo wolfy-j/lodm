@@ -4,7 +4,6 @@
  *
  * @license   MIT
  * @author    Anton Titov (Wolfy-J)
- * @copyright ©2009-2015
  */
 namespace Spiral\LODM\Laravel;
 
@@ -18,13 +17,6 @@ use Spiral\Validation\ValidatorInterface;
 class LaravelValidator implements ValidatorInterface
 {
     /**
-     * Data to be validated.
-     *
-     * @var array
-     */
-    private $data = [];
-
-    /**
      * Rules to be applied to validation.
      *
      * @var array
@@ -32,12 +24,26 @@ class LaravelValidator implements ValidatorInterface
     private $rules = [];
 
     /**
+     * Data to be validated.
+     *
+     * @var array
+     */
+    private $data = [];
+
+    /**
+     * Errors provided from outside.
+     *
+     * @var array
+     */
+    private $registeredErrors = [];
+
+    /**
      * {@inheritdoc}
      */
-    public function __construct($data = [], array $rules = [])
+    public function __construct(array $rules = [], $data = [])
     {
-        $this->data = $data;
         $this->rules = $rules;
+        $this->data = $data;
     }
 
     /**
@@ -71,6 +77,26 @@ class LaravelValidator implements ValidatorInterface
     /**
      * {@inheritdoc}
      */
+    public function registerError($field, $error)
+    {
+        $this->registeredErrors[$field] = $error;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function flushRegistered()
+    {
+        $this->registeredErrors = [];
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function hasErrors()
     {
         return !empty($this->getErrors());
@@ -92,6 +118,6 @@ class LaravelValidator implements ValidatorInterface
             $errors[$field] = current($errors);
         }
 
-        return $errors;
+        return $this->registeredErrors + $errors;
     }
 }
