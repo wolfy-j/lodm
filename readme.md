@@ -181,7 +181,7 @@ Other documentation articles related to Spiral ODM component:
 * [Pagination] (https://github.com/spiral/guide/blob/master/components/pagination.md)
 * [Tokenizer] (https://github.com/spiral/guide/blob/master/components/tokenizer.md)
 * [**Validation**] (https://github.com/spiral/guide/blob/master/components/validation.md) (attention, this module uses Laravel validator via `ValidatorInterface`!)
-* [Behaviour Schemas] (https://github.com/spiral/guide/blob/master/schemas.md)
+* [Behaviour Schemas] (https://github.com/spiral/guide/blob/master/framework/schemas.md)
 
 ## Issues
 Please do not open issue tickets in this github project unless they are related to the integration process. Use [Components Respository](https://github.com/spiral/components) for ODM related issues.
