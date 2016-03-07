@@ -50,7 +50,7 @@ class SchemaUpdate extends Command
      */
     public function handle()
     {
-        $builder = $this->odm->updateSchema();
+        $builder = $this->odm->updateSchema(null, true);
 
         $countModels = count($builder->getDocuments());
         $this->info(
