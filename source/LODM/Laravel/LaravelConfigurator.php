@@ -42,19 +42,25 @@ class LaravelConfigurator implements ConfiguratorInterface
      *
      * @param bool $toArray Always force array response.
      */
-    public function getConfig($section = null)
+    public function getConfig(?string $section = null) : array
     {
         if (!empty($this->prefix)) {
             $section = $this->prefix . '.' . $section;
         }
 
-        return config($section);
+        $result = config($section);
+
+        if(is_null($result)){
+            return [];
+        }
+
+        return $result;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function createInjection(\ReflectionClass $class, $context = null)
+    public function createInjection(\ReflectionClass $class, ?string $context = null)
     {
         if (isset($this->configs[$class->getName()])) {
             return $this->configs[$class->getName()];

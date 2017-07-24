@@ -9,7 +9,7 @@
   ],
   "require": {
     "laravel/framework": "*",
-    "spiral/components": "*"
+    "spiral/components": "^0.9.0"
   },
   "autoload": {
     "psr-4": {
