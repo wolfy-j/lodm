@@ -8,7 +8,6 @@
 namespace Spiral\LODM\Support;
 
 use Spiral\Core\Component;
-use Spiral\Core\HippocampusInterface;
 use Spiral\Files\FilesInterface;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
@@ -20,7 +19,7 @@ use Symfony\Component\Finder\SplFileInfo;
  * @see https://github.com/spiral/guide/blob/master/framework/memory.md
  * @see https://github.com/spiral/guide/blob/master/schemas.md
  */
-class Memory extends Component implements HippocampusInterface
+class Memory extends Component
 {
     /**
      * Extension for memory files.
