@@ -5,6 +5,7 @@
  * @license   MIT
  * @author    Anton Titov (Wolfy-J)
  */
+
 namespace Spiral\LODM\Commands;
 
 use Illuminate\Console\Command;
@@ -50,11 +51,19 @@ class SchemaUpdate extends Command
      */
     public function handle()
     {
-        $builder = $this->odm->updateSchema(null, true);
+        //Get builder first
+        $builder = $this->odm->schemaBuilder(true);
 
-        $countModels = count($builder->getDocuments());
-        $this->info(
-            "<info>ODM Schema has been updated, found documents: <comment>{$countModels}</comment></info>"
-        );
+        //If manual control is needed
+        //$builder->addSchema();
+
+        //Serialize schema into memory
+        $this->odm->setSchema($builder, true);
+
+        $countModels = count($builder->getSchemas());
+        $this->write("<info>ODM Schema have been updated, found documents: <comment>{$countModels}</comment></info>");
+
+        //Automatically create indexes
+        $builder->createIndexes();
     }
 }

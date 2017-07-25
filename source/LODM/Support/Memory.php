@@ -5,9 +5,10 @@
  * @license   MIT
  * @author    Anton Titov (Wolfy-J)
  */
+
 namespace Spiral\LODM\Support;
 
-use Spiral\Core\Component;
+use Spiral\Core\MemoryInterface;
 use Spiral\Files\FilesInterface;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
@@ -19,7 +20,7 @@ use Symfony\Component\Finder\SplFileInfo;
  * @see https://github.com/spiral/guide/blob/master/framework/memory.md
  * @see https://github.com/spiral/guide/blob/master/schemas.md
  */
-class Memory extends Component
+class Memory implements MemoryInterface
 {
     /**
      * Extension for memory files.
@@ -55,9 +56,9 @@ class Memory extends Component
      *
      * @param string $filename Cache filename.
      */
-    public function loadData($section, $location = null, &$filename = null)
+    public function loadData(string $section)
     {
-        $filename = $this->memoryFilename($section, $location);
+        $filename = $this->memoryFilename($section);
 
         if (!file_exists($filename)) {
             return null;
@@ -73,9 +74,9 @@ class Memory extends Component
     /**
      * {@inheritdoc}
      */
-    public function saveData($section, $data, $location = null)
+    public function saveData(string $section, $data)
     {
-        $filename = $this->memoryFilename($section, $location);
+        $filename = $this->memoryFilename($section);
 
         //We are packing data into plain php
         $data = '<?php return ' . var_export($data, true) . ';';
@@ -89,6 +90,7 @@ class Memory extends Component
      * none specified).
      *
      * @param string $location
+     *
      * @return array
      */
     public function getSections($location = null)
@@ -121,21 +123,15 @@ class Memory extends Component
      * Get extension to use for runtime data or configuration cache, all file in cache directory
      * will additionally get applicationID postfix.
      *
-     * @param string $name     Runtime data file name (without extension).
-     * @param string $location Location to store data in.
+     * @param string $name Runtime data file name (without extension).
+     *
      * @return string
      */
-    private function memoryFilename($name, $location = null)
+    private function memoryFilename($name)
     {
         $name = strtolower(str_replace(['/', '\\'], '-', $name));
 
-        if (!empty($location)) {
-            $location = $this->directory . $location . '/';
-        } else {
-            $location = $this->directory;
-        }
-
         //Runtime cache
-        return $location . $name . static::EXTENSION;
+        return $this->directory . $name . static::EXTENSION;
     }
 }

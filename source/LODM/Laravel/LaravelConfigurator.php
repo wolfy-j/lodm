@@ -67,7 +67,7 @@ class LaravelConfigurator implements ConfiguratorInterface
         }
 
         //Due internal contract we can fetch config section from class constant
-        $config = $this->getConfig($class->getConstant('CONFIG'), false);
+        $config = $this->getConfig($class->getConstant('CONFIG'));
 
         if ($config instanceof ConfigInterface) {
             //Apparently config file contain class definition (let's hope this is same config class)

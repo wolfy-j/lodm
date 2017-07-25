@@ -8,8 +8,7 @@
     }
   ],
   "require": {
-    "laravel/framework": "*",
-    "spiral/components": "^0.9.0"
+    "spiral/odm": "^1.0.0"
   },
   "autoload": {
     "psr-4": {

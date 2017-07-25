@@ -4,9 +4,8 @@
  *
  * @see ODMConfig
  */
+
 use Spiral\LODM\Accessors;
-use Spiral\ODM\Accessors\ScalarArray;
-use Spiral\ODM\Entities\MongoDatabase;
 use Spiral\ODM\ODM;
 
 return [
@@ -23,10 +22,9 @@ return [
     ],
     'databases' => [
         'default' => [
-            'server'    => 'mongodb://localhost:27017',
-            'profiling' => MongoDatabase::PROFILE_SIMPLE,
-            'database'  => 'spiral',
-            'options'   => [
+            'server'   => 'mongodb://localhost:27017',
+            'database' => 'spiral',
+            'options'  => [
                 'connect' => true
             ]
         ],
