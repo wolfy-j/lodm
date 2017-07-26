@@ -29,6 +29,10 @@ class LaravelConfigurator implements ConfiguratorInterface
      */
     protected $configs = [];
 
+    private $aliases = [
+        'schemas/documents' => 'documents'
+    ];
+
     /**
      * @param string $prefix
      */
@@ -44,6 +48,10 @@ class LaravelConfigurator implements ConfiguratorInterface
      */
     public function getConfig(?string $section = null) : array
     {
+        if(!empty($this->aliases[$section])) {
+            $section = $this->aliases[$section];
+        }
+
         if (!empty($this->prefix)) {
             $section = $this->prefix . '.' . $section;
         }

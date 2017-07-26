@@ -20,6 +20,7 @@ use Spiral\Files\FilesInterface;
 use Spiral\LODM\Support\Memory;
 use Spiral\LODM\Support\SharedContainer;
 use Spiral\ODM\ODM;
+use Spiral\ODM\ODMInterface;
 use Spiral\Tokenizer\ClassesInterface;
 use Spiral\Tokenizer\ClassLocator;
 use Spiral\Tokenizer\Tokenizer;
@@ -60,7 +61,7 @@ class ODMServiceProvider extends ServiceProvider
 
         //Required for tokenizer to read file
         $container->bind(FilesInterface::class, FileManager::class);
-
+        $container->bind(ODMInterface::class, ODM::class);
         //Laravel also uses it's own configuration source, let's define our wrapper in spiral
         //container, default settings will use folder "spiral" under config directory to prevent
         //collisions
@@ -71,7 +72,7 @@ class ODMServiceProvider extends ServiceProvider
         $container->bindSingleton(MemoryInterface::class, $container->make(Memory::class, [
             'directory' => storage_path('/')
         ]));
-
+        $container->bind(\Spiral\ODM\Schemas\LocatorInterface::class, \Spiral\ODM\Schemas\SchemaLocator::class);
         //Ok, now can define our ODM as singleton
         $this->app->singleton(ODM::class, function () use ($container) {
             //Container will do the rest, since ODM stated as singleton we
