@@ -94,9 +94,9 @@ class ODMServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../../config/mongo.php'             => config_path('spiral/mongo.php'),
-            __DIR__ . '/../../config/schemas/documents.php' => config_path('spiral/schemas/documents.php'),
-            __DIR__ . '/../../config/tokenizer.php'         => config_path('spiral/tokenizer.php')
+            __DIR__ . '/../../config/mongo.php'     => config_path('spiral/mongo.php'),
+            __DIR__ . '/../../config/documents.php' => config_path('spiral/documents.php'),
+            __DIR__ . '/../../config/tokenizer.php' => config_path('spiral/tokenizer.php')
         ]);
     }
 }
