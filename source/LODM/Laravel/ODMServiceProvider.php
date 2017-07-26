@@ -62,6 +62,7 @@ class ODMServiceProvider extends ServiceProvider
         //Required for tokenizer to read file
         $container->bind(FilesInterface::class, FileManager::class);
         $container->bind(ODMInterface::class, ODM::class);
+        
         //Laravel also uses it's own configuration source, let's define our wrapper in spiral
         //container, default settings will use folder "spiral" under config directory to prevent
         //collisions
@@ -72,7 +73,13 @@ class ODMServiceProvider extends ServiceProvider
         $container->bindSingleton(MemoryInterface::class, $container->make(Memory::class, [
             'directory' => storage_path('/')
         ]));
+        
+        $this->app->singleton(MongoManager::class, function () use ($container) {
+            return $container->get(MongoManager::class);
+        });
+        
         $container->bind(\Spiral\ODM\Schemas\LocatorInterface::class, \Spiral\ODM\Schemas\SchemaLocator::class);
+        
         //Ok, now can define our ODM as singleton
         $this->app->singleton(ODM::class, function () use ($container) {
             //Container will do the rest, since ODM stated as singleton we
