@@ -20,11 +20,3 @@ Full documentation with examples is available [here](https://spiral-framework.co
 
 ## Issues
 Please do not open issue tickets in this github project unless they are related to the integration process. Use [Primary Respository](https://github.com/spiral/odm) for ODM related issues.
-
-## Dependencies
-At this moment, this module depends on whole set of Spiral components (simply because they are all placed in the same repo) and their nested dependencies. However, this state is only kept until every component gets it's own repository (Please feel free to propose any ideas or suggestions for better ways to do this).
-
-Project will be counted as **beta** until repository split is performed.
-
-## Standalone usage
-The Spiral ODM component can also be used outside of any framework as a standalone module. Just check what  configurations and container bindings are set in the service provider.
