@@ -1,20 +1,16 @@
 <?php
 /**
- * Spiral Framework.
+ * spiral
  *
- * @license   MIT
- * @author    Anton Titov (Wolfy-J)
+ * @author    Wolfy-J
  */
+
 namespace Spiral\LODM\Traits;
 
-use Spiral\Models\DataEntity;
+use MongoDB\BSON\UTCDateTime;
 use Spiral\Models\Events\DescribeEvent;
 use Spiral\Models\Events\EntityEvent;
-use Spiral\ODM\Document;
-use Spiral\ODM\Entities\Schemas\DocumentSchema;
-use Spiral\ORM\Entities\Schemas\RecordSchema;
-use Spiral\ORM\Record;
-use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * Timestamps traits adds two magic fields into model/document schema time updated and time created
@@ -32,11 +28,7 @@ trait TimestampsTrait
      */
     public function touch()
     {
-        if ($this instanceof Record) {
-            $this->setField('time_updated', new \DateTime(), false);
-        } elseif ($this instanceof Document) {
-            $this->setField('timeUpdated', new \MongoDate(time()), false);
-        }
+        $this->setField('timeUpdated', new UTCDateTime(time()));
 
         return $this;
     }
@@ -47,17 +39,11 @@ trait TimestampsTrait
     protected static function __init__timestamps()
     {
         /**
-         * @var EventDispatcher $dispatcher
-         */
-        $dispatcher = self::events();
-
-        /**
          * Updates values of time_updated and time_created fields.
          */
         $listener = self::__timestamps__saveListener();
-
-        $dispatcher->addListener('saving', $listener);
-        $dispatcher->addListener('updating', $listener);
+        self::events()->addListener('create', $listener);
+        self::events()->addListener('update', $listener);
     }
 
     /**
@@ -76,34 +62,19 @@ trait TimestampsTrait
     private static function __timestamps__saveListener()
     {
         return function (EntityEvent $event, $eventName) {
-            /**
-             * @var DataEntity $model
-             */
-            $model = $event->entity();
-            if ($model instanceof Record) {
-                switch ($eventName) {
-                    case 'saving':
-                        $model->setField('time_created', new \DateTime(), false);
-                    //no-break
-                    case 'updating':
-                        $model->setField('time_updated', new \DateTime(), false);
-                }
-            }
-
-            if ($model instanceof Document) {
-                switch ($eventName) {
-                    case 'saving':
-                        $model->setField('timeCreated', new \MongoDate(time()), false);
-                    //no-break
-                    case 'updating':
-                        $model->setField('timeUpdated', new \MongoDate(time()), false);
-                }
+            $entity = $event->getEntity();
+            switch ($eventName) {
+                case 'create':
+                    $entity->setField('timeCreated', new UTCDateTime(time() * 1000));
+                //no-break
+                case 'update':
+                    $entity->setField('timeUpdated', new UTCDateTime(time() * 1000));
             }
         };
     }
 
     /**
-     * Create appropriate schema modification listener.
+     * Create appropriate schema modification listener. Executed only in analysis.
      *
      * @return callable
      */
@@ -115,21 +86,18 @@ trait TimestampsTrait
             }
 
             $schema = $event->getValue();
-
-            //Registering fields in schema
-            switch (get_class($event->reflection())) {
-                case RecordSchema::class:
-                    $schema['time_created'] = 'timestamp,null';
-                    $schema['time_updated'] = 'timestamp,null';
-                    break;
-                case DocumentSchema::class:
-                    $schema['timeCreated'] = 'timestamp';
-                    $schema['timeUpdated'] = 'timestamp';
-                    break;
-            }
+            $schema += [
+                'timeCreated' => 'timestamp',
+                'timeUpdated' => 'timestamp'
+            ];
 
             //Updating schema value
             $event->setValue($schema);
         };
     }
+
+    /**
+     * @return \Symfony\Component\EventDispatcher\EventDispatcherInterface
+     */
+    abstract public static function events(): EventDispatcherInterface;
 }

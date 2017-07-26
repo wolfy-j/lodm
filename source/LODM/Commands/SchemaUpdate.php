@@ -50,11 +50,12 @@ class SchemaUpdate extends Command
      */
     public function handle()
     {
-        $builder = $this->odm->updateSchema(null, true);
 
-        $countModels = count($builder->getDocuments());
-        $this->info(
-            "<info>ODM Schema has been updated, found documents: <comment>{$countModels}</comment></info>"
-        );
+        $builder = $this->odm->schemaBuilder(true);
+        $this->odm->setSchema($builder, true);
+
+
+            $builder->createIndexes();
+
     }
 }

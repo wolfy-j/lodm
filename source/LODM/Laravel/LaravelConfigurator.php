@@ -29,6 +29,10 @@ class LaravelConfigurator implements ConfiguratorInterface
      */
     protected $configs = [];
 
+    private $aliases = [
+        'schemas/documents' => 'documents'
+    ];
+
     /**
      * @param string $prefix
      */
@@ -42,26 +46,36 @@ class LaravelConfigurator implements ConfiguratorInterface
      *
      * @param bool $toArray Always force array response.
      */
-    public function getConfig($section = null, $toArray = true)
+    public function getConfig(?string $section = null) : array
     {
+        if(!empty($this->aliases[$section])) {
+            $section = $this->aliases[$section];
+        }
+
         if (!empty($this->prefix)) {
             $section = $this->prefix . '.' . $section;
         }
 
-        return config($section);
+        $result = config($section);
+
+        if(is_null($result)){
+            return [];
+        }
+
+        return $result;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function createInjection(\ReflectionClass $class, $context = null)
+    public function createInjection(\ReflectionClass $class, ?string $context = null)
     {
         if (isset($this->configs[$class->getName()])) {
             return $this->configs[$class->getName()];
         }
 
         //Due internal contract we can fetch config section from class constant
-        $config = $this->getConfig($class->getConstant('CONFIG'), false);
+        $config = $this->getConfig($class->getConstant('CONFIG'));
 
         if ($config instanceof ConfigInterface) {
             //Apparently config file contain class definition (let's hope this is same config class)
