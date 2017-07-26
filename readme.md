@@ -1,5 +1,14 @@
-# LODM, ODM with inheritance for Laravel 5+
-LODM module is intended to bring the Spiral ODM component functionality into your Laravel applications. This component provides the ability to manage your MongoDB data in an OOP way using your models compositions and aggregations. One of the side effects of this component design, is that you are able to create ODM models which are not related to MongoDB and use them to represent hierarchical data.
+LODM, ODM with inheritance for Laravel 5+
+========
+[![Latest Stable Version](https://poser.pugx.org/spiral/odm/v/stable)](https://packagist.org/packages/spiral/odm) 
+[![License](https://poser.pugx.org/spiral/odm/license)](https://packagist.org/packages/spiral/odm)
+[![Build Status](https://travis-ci.org/spiral/odm.svg?branch=master)](https://travis-ci.org/spiral/odm)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spiral/odm/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/spiral/odm/?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/spiral/odm/badge.svg?branch=master)](https://coveralls.io/github/spiral/odm?branch=master)
+
+<b>[Documentation](http://spiral-framework.com/guide)</b> | [CHANGELOG](/CHANGELOG.md)
+
+LODM module is intended to bring the Spiral ODM component functionality into your Laravel applications. This component provides the ability to manage your MongoDB data in an OOP way using your models compositions and aggregations.
 
 ## Installation
 Package installation can be performed using the simple composer command `composer require wolfy-j/lodm`. 
