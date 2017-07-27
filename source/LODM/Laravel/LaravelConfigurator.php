@@ -46,7 +46,7 @@ class LaravelConfigurator implements ConfiguratorInterface
      *
      * @param bool $toArray Always force array response.
      */
-    public function getConfig(?string $section = null) : array
+    public function getConfig(string $section = null) : array
     {
         if(!empty($this->aliases[$section])) {
             $section = $this->aliases[$section];
