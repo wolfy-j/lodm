@@ -68,7 +68,7 @@ class LaravelConfigurator implements ConfiguratorInterface
     /**
      * {@inheritdoc}
      */
-    public function createInjection(\ReflectionClass $class, ?string $context = null)
+    public function createInjection(\ReflectionClass $class, string $context = null)
     {
         if (isset($this->configs[$class->getName()])) {
             return $this->configs[$class->getName()];
