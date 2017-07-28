@@ -75,7 +75,7 @@ class ODMServiceProvider extends ServiceProvider
         ]));
         
         $this->app->singleton(\Spiral\ODM\MongoManager::class, function () use ($container) {
-            return $container->get(MongoManager::class);
+            return $container->get(\Spiral\ODM\MongoManager::class);
         });
         
         $container->bind(\Spiral\ODM\Schemas\LocatorInterface::class, \Spiral\ODM\Schemas\SchemaLocator::class);
