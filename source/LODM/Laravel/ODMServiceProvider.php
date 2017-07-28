@@ -74,7 +74,7 @@ class ODMServiceProvider extends ServiceProvider
             'directory' => storage_path('/')
         ]));
         
-        $this->app->singleton(MongoManager::class, function () use ($container) {
+        $this->app->singleton(\Spiral\ODM\MongoManager::class, function () use ($container) {
             return $container->get(MongoManager::class);
         });
         
