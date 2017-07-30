@@ -62,7 +62,8 @@ protected function indexAction()
 ```php
 protected function indexAction(string $id, UsersRepository $users)
 {
-    if (empty($user = $users->findByPK((int)$id))) {
+    $user = $users->findByPK($id);
+    if (empty($user)) {
         throw new NotFoundException('No such user');
     }
 
