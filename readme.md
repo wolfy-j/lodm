@@ -1,4 +1,4 @@
-LODM, ODM with inheritance for Laravel 5+
+ODM with inheritance and OOP composition for Laravel 5+
 ========
 [![Latest Stable Version](https://poser.pugx.org/spiral/odm/v/stable)](https://packagist.org/packages/spiral/odm) 
 [![License](https://poser.pugx.org/spiral/odm/license)](https://packagist.org/packages/spiral/odm)
