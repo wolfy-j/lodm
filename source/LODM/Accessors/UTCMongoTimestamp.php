@@ -28,7 +28,7 @@ class UTCMongoTimestamp extends AbstractTimestamp implements CompositableInterfa
      */
     public function packValue()
     {
-        return new UTCDateTime($this->getTimestamp());
+        return new UTCDateTime($this);
     }
 
     /**
