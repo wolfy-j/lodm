@@ -40,6 +40,22 @@ class UTCMongoTimestamp extends AbstractTimestamp implements CompositableInterfa
     }
 
     /**
+     * Carbon migration.
+     *
+     * @param string $name
+     *
+     * @return int|null
+     */
+    public function __get($name)
+    {
+        if ($name == 'timestamp') {
+            return $this->getTimestamp();
+        }
+
+        return null;
+    }
+
+    /**
      * {@inheritdoc}
      */
     protected function castTimestamp($datetime, \DateTimeZone $timezone = null)
