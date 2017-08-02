@@ -20,10 +20,6 @@ class UTCMongoTimestamp extends AbstractTimestamp implements CompositableInterfa
      */
     protected function fetchTimestamp($value): int
     {
-        if ($value instanceof UTCDateTime) {
-            $value = $value->toDateTime();
-        }
-
         return $this->castTimestamp($value, new \DateTimeZone('UTC')) ?? 0;
     }
 
@@ -32,7 +28,7 @@ class UTCMongoTimestamp extends AbstractTimestamp implements CompositableInterfa
      */
     public function packValue()
     {
-        return new UTCDateTime($this);
+        return new UTCDateTime($this->getTimestamp());
     }
 
     /**
@@ -41,5 +37,17 @@ class UTCMongoTimestamp extends AbstractTimestamp implements CompositableInterfa
     public function buildAtomics(string $container = ''): array
     {
         return ['$set' => [$container => $this->packValue()]];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function castTimestamp($datetime, \DateTimeZone $timezone = null)
+    {
+        if ($datetime instanceof UTCDateTime) {
+            $datetime = $datetime->toDateTime();
+        }
+
+        return parent::castTimestamp($datetime, $timezone);
     }
 }
